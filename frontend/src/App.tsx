@@ -1,10 +1,7 @@
-function App() {
+import AppRoutes from "./routes/AppRoutes"
 
-  return (
-    <>
-      <h1 className="text-center">test</h1>
-    </>
-  )
+function App() {
+  return <AppRoutes />
 }
 
 export default App
