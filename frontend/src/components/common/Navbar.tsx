@@ -24,7 +24,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Menu */}
-          <nav className="hidden md:flex space-x-8 text-gray-800 font-medium text-lg">
+          <nav className="hidden md:flex space-x-12 text-gray-800 font-medium text-lg">
             <Link className="hover:text-black" to="/">Home</Link>
             <Link className="hover:text-black" to="/shop">Products</Link>
           </nav>
@@ -38,7 +38,7 @@ export default function Navbar() {
           </button>
 
           {/* Desktop Login */}
-          <nav className="hidden md:flex space-x-8 text-gray-800 font-medium text-lg">
+          <nav className="hidden md:flex space-x-12 text-gray-800 font-medium text-lg">
             <Link className="hover:text-black" to="/login">LOGIN</Link>
           </nav>
           
