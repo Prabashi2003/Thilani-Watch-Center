@@ -1,5 +1,4 @@
 import { useState } from "react";
-import logo from "../../assets/icons/logo.png";
 import Ham from "../../assets/icons/ham.png";
 import { Link } from "react-router-dom";
 
@@ -10,7 +9,7 @@ export default function Navbar() {
     <>
       {/* NAVBAR */}
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 py-15`}
+       className="mt-10"
       >
         <div className="max-w-7xl mx-auto pl-2 pr-4 sm:pl-4 sm:pr-4 h-16 flex items-center justify-between">
           {/* Logo */}
@@ -55,7 +54,7 @@ export default function Navbar() {
 
       {/* SLIDE MENU */}
       <aside
-        className={`fixed top-0 right-0 h-full w-64 z-50 transform transition-transform duration-300 bg-linear-to-t from-gray-700 via-gray-900 to-black
+        className={`fixed top-0 right-0 h-full w-64 z-50 transform transition-transform duration-30
         ${open ? "translate-x-0" : "translate-x-full"}
         bg-white/90 backdrop-blur-lg`}
       >
