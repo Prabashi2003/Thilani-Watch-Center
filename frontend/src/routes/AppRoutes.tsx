@@ -7,7 +7,6 @@ import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import WatchInfo from "../pages/WatchDetails";
 
-
 const AppRoutes = () => {
     return (
         <Routes>
