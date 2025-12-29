@@ -1,20 +1,25 @@
-import express, { Application } from 'express';
+import express from "express";
+import dotenv from "dotenv";
+import connectDB from "./config/db";
+import watchRoutes from "./routes/watchRoutes";
+import categoryRoutes from "./routes/categoryRoutes";
+import brandRoutes from "./routes/brandRoutes";
 
-const app: Application = express();
-const PORT = process.env.PORT || 5000;
+dotenv.config();
+connectDB();
 
-// Middleware
+const app = express();
 app.use(express.json());
 
-// Routes
+app.use("/api/watches", watchRoutes);
+app.use("/api/category", categoryRoutes);
+app.use("/api/brand", brandRoutes);
 
-
-// Root endpoint
-app.get('/', (req, res) => {
-  res.send('Express TypeScript Backend is running!');
+app.get("/", (_, res) => {
+  res.send("Watch Backend Running 🚀");
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+const PORT = process.env.PORT || 5001;
+app.listen(PORT, () =>
+  console.log(`Server running on http://localhost:${PORT}`)
+);
