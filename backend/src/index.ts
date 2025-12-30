@@ -4,12 +4,14 @@ import connectDB from "./config/db";
 import watchRoutes from "./routes/watchRoutes";
 import categoryRoutes from "./routes/categoryRoutes";
 import brandRoutes from "./routes/brandRoutes";
+const cors = require('cors');
 
 dotenv.config();
 connectDB();
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.use("/api/watches", watchRoutes);
 app.use("/api/category", categoryRoutes);

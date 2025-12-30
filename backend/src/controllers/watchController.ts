@@ -19,12 +19,19 @@ export const createWatch = async (req: Request, res: Response) => {
 export const getAllWatches = async (_: Request, res: Response) => {
   try {
     const watches = await Watch.find()
-      .populate("category")
-      .populate("brand");
+      .populate("brand", "name")
+      .populate("category", "name");
 
-    res.json(watches);
+    // Ensure null safety for frontend
+    const safeWatches = watches.map(w => ({
+      ...w.toObject(),
+      brand: w.brand || null,
+      category: w.category || null,
+    }));
+
+    res.json(safeWatches);
   } catch (error) {
-    res.status(500).json({ message: "Failed to fetch watches" });
+    res.status(500).json({ message: "Failed to fetch watches", error });
   }
 };
 
@@ -34,16 +41,46 @@ export const getAllWatches = async (_: Request, res: Response) => {
 export const getWatchById = async (req: Request, res: Response) => {
   try {
     const watch = await Watch.findById(req.params.id)
-      .populate("category")
-      .populate("brand");
+      .populate("brand", "name")
+      .populate("category", "name");
 
     if (!watch) {
       return res.status(404).json({ message: "Watch not found" });
     }
 
-    res.json(watch);
+    res.json({
+      ...watch.toObject(),
+      brand: watch.brand || null,
+      category: watch.category || null,
+    });
   } catch (error) {
-    res.status(400).json({ message: "Invalid ID" });
+    res.status(400).json({ message: "Invalid ID", error });
+  }
+};
+
+/**
+ * UPDATE WATCH
+ */
+export const updateWatch = async (req: Request, res: Response) => {
+  try {
+    const watch = await Watch.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    })
+      .populate("brand", "name")
+      .populate("category", "name");
+
+    if (!watch) {
+      return res.status(404).json({ message: "Watch not found" });
+    }
+
+    res.json({
+      ...watch.toObject(),
+      brand: watch.brand || null,
+      category: watch.category || null,
+    });
+  } catch (error) {
+    res.status(400).json({ message: "Update failed", error });
   }
 };
 
@@ -52,9 +89,14 @@ export const getWatchById = async (req: Request, res: Response) => {
  */
 export const deleteWatch = async (req: Request, res: Response) => {
   try {
-    await Watch.findByIdAndDelete(req.params.id);
+    const watch = await Watch.findByIdAndDelete(req.params.id);
+
+    if (!watch) {
+      return res.status(404).json({ message: "Watch not found" });
+    }
+
     res.json({ message: "Watch deleted successfully" });
   } catch (error) {
-    res.status(400).json({ message: "Delete failed" });
+    res.status(400).json({ message: "Delete failed", error });
   }
 };

@@ -6,6 +6,12 @@ import SoloPage from "../pages/soloPage";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import WatchInfo from "../pages/WatchDetails";
+import SidebarLayout from "../layout/SlideBar";
+import Overview from "../pages/Overview";
+import Orders from "../pages/Orders";
+import Customers from "../pages/Customers";
+import Analytics from "../pages/Analytics";
+import Inventory from "../pages/Inventory";
 
 const AppRoutes = () => {
     return (
@@ -16,8 +22,21 @@ const AppRoutes = () => {
                 <Route path="/soloPage" element={<SoloPage />} />
                 <Route path="/watchInfo" element={<WatchInfo />} />
             </Route>
+
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+
+            {/* Dashboard area with sidebar */}
+            <Route path="/dashboard" element={<SidebarLayout />}>
+              <Route index element={<Overview />} />
+              <Route path="inventory" element={<Inventory />} />
+              <Route path="orders" element={<Orders />} />
+              <Route path="customers" element={<Customers />} />
+              <Route path="analytics" element={<Analytics />} />
+              
+            </Route>
+
+
         </Routes>
     );
 };
