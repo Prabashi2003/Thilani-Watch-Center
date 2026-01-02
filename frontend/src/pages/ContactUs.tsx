@@ -282,17 +282,17 @@ function ContactUs() {
               </div>
 
               {/* MAP & INFO */}
-              <div className="space-y-8">
-                {/* Google Map */}
-                <div className="relative h-[400px] rounded-2xl overflow-hidden border-2 border-gray-300 shadow-xl">
-                <iframe
-                    title="Thilani Watch Centre - Map"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1977.6273154434104!2d79.88039761606265!3d6.775157185112062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae24509c8fab27f%3A0x165332b3d90ce90e!2sThilani%20Watch%20Centre!5e0!3m2!1sen!2slk!4v1704258697452!5m2!1sen!2slk"
-                    className="absolute inset-0 w-full h-full border-0"
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                />
+                <div className="space-y-8">
+                    {/* Google Map */}
+                    <div className="relative h-[400px] rounded-2xl overflow-hidden border-2 border-gray-300 shadow-xl">
+                    <iframe
+                        title="Thilani Watch Centre - Map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1977.6273154434104!2d79.88039761606265!3d6.775157185112062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae24509c8fab27f%3A0x165332b3d90ce90e!2sThilani%20Watch%20Centre!5e0!3m2!1sen!2slk!4v1704258697452!5m2!1sen!2slk"
+                        className="absolute inset-0 w-full h-full border-0"
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                    />
                 </div>
 
                 {/* Additional Info */}
