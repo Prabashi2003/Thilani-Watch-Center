@@ -12,6 +12,7 @@ import Orders from "../pages/Orders";
 import Customers from "../pages/Customers";
 import Analytics from "../pages/Analytics";
 import Inventory from "../pages/Inventory";
+import ContactUs from "../pages/ContactUs";
 
 const AppRoutes = () => {
     return (
@@ -21,6 +22,7 @@ const AppRoutes = () => {
                 <Route path="/shop" element={<Shop />} />
                 <Route path="/soloPage" element={<SoloPage />} />
                 <Route path="/watchInfo" element={<WatchInfo />} />
+                <Route path="/ContactUs" element={<ContactUs />} />
             </Route>
 
             <Route path="/login" element={<Login />} />
