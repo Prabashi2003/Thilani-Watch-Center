@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home";
 import Shop from "../pages/Shop";
-import SoloPage from "../pages/soloPage";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import WatchInfo from "../pages/WatchDetails";
@@ -12,6 +11,8 @@ import Orders from "../pages/Orders";
 import Customers from "../pages/Customers";
 import Analytics from "../pages/Analytics";
 import Inventory from "../pages/Inventory";
+import Cart from "../pages/Cart";
+import Checkout from "../pages/Checkout";
 
 const AppRoutes = () => {
     return (
@@ -19,8 +20,9 @@ const AppRoutes = () => {
             <Route element={<MainLayout />}>
                 <Route path="/" element={<Home />} />
                 <Route path="/shop" element={<Shop />} />
-                <Route path="/soloPage" element={<SoloPage />} />
                 <Route path="/watchInfo" element={<WatchInfo />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/checkout" element={<Checkout />} />
             </Route>
 
             <Route path="/login" element={<Login />} />

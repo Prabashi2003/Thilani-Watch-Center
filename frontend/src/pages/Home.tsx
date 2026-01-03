@@ -9,6 +9,7 @@ import casioImg from "../assets/icons/3.jpg";
 import tissotImg from "../assets/icons/4.jpg";
 import mechanismImg from "../assets/icons/5.jpg";
 import skeletonWatchImg from "../assets/icons/7.png";
+import Delivery from "../components/delivery";
 
 function Home() {
   const sigRef = useRef<HTMLDivElement | null>(null);
@@ -308,6 +309,11 @@ function Home() {
             </div>
           </div>
         </section>
+      </LazyLoad>
+
+
+      <LazyLoad>
+              <Delivery />
       </LazyLoad>
 
 
