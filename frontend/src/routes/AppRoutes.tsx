@@ -11,8 +11,8 @@ import Orders from "../pages/Orders";
 import Customers from "../pages/Customers";
 import Analytics from "../pages/Analytics";
 import Inventory from "../pages/Inventory";
-import Cart from "../pages/Cart";
-import Checkout from "../pages/Checkout";
+import ContactUs from "../pages/ContactUs";
+import AboutUs from "../pages/AboutUs";
 
 const AppRoutes = () => {
     return (
@@ -21,8 +21,8 @@ const AppRoutes = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/shop" element={<Shop />} />
                 <Route path="/watchInfo" element={<WatchInfo />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/ContactUs" element={<ContactUs />} />
+                <Route path="/AboutUs" element={<AboutUs />} />
             </Route>
 
             <Route path="/login" element={<Login />} />

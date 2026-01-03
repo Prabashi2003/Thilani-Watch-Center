@@ -26,6 +26,8 @@ export default function Navbar() {
           <nav className="hidden md:flex space-x-12 text-gray-800 font-medium text-lg">
             <Link className="hover:text-black" to="/">Home</Link>
             <Link className="hover:text-black" to="/shop">Products</Link>
+            <Link className="hover:text-black" to="/ContactUs">Contact Us</Link>
+            <Link className="hover:text-black" to="/AboutUs">About Us</Link>
           </nav>
 
           {/* Mobile Button */}
