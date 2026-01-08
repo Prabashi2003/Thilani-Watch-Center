@@ -13,6 +13,9 @@ import Analytics from "../pages/Analytics";
 import Inventory from "../pages/Inventory";
 import ContactUs from "../pages/ContactUs";
 import AboutUs from "../pages/AboutUs";
+import Cart from "../pages/Cart";
+import CheckoutPage from "../pages/Checkout";
+import UserDashboard from "../pages/UserDashboard";
 
 const AppRoutes = () => {
     return (
@@ -23,6 +26,9 @@ const AppRoutes = () => {
                 <Route path="/watchInfo" element={<WatchInfo />} />
                 <Route path="/ContactUs" element={<ContactUs />} />
                 <Route path="/AboutUs" element={<AboutUs />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/checkout" element={<CheckoutPage />} />
+                <Route path="/userdashboard" element={<UserDashboard />} />
             </Route>
 
             <Route path="/login" element={<Login />} />
