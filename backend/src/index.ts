@@ -4,6 +4,10 @@ import connectDB from "./config/db";
 import watchRoutes from "./routes/watchRoutes";
 import categoryRoutes from "./routes/categoryRoutes";
 import brandRoutes from "./routes/brandRoutes";
+import orderRoutes from "./routes/orderRoutes";
+import cartRoutes from "./routes/cartRouter";
+
+
 const cors = require('cors');
 
 dotenv.config();
@@ -16,6 +20,8 @@ app.use(cors());
 app.use("/api/watches", watchRoutes);
 app.use("/api/category", categoryRoutes);
 app.use("/api/brand", brandRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/cart",cartRoutes);
 
 app.get("/", (_, res) => {
   res.send("Watch Backend Running 🚀");
