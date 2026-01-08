@@ -31,13 +31,13 @@ function AboutUs() {
             {/* LEFT SIDE - Content */}
             <div className="space-y-8 order-2 lg:order-1">
               <div>
-                <span className="inline-block px-4 py-2 bg-[#d97706] text-white text-xs tracking-widest font-bold rounded-full mb-6">
+                <span className="inline-block px-4 py-2 bg-[#3b82f6] text-white text-xs tracking-widest font-bold rounded-full mb-6">
                   EST. 1999 • 25+ YEARS OF EXCELLENCE
                 </span>
                 
                 <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 leading-tight">
                   Thilani<br/>
-                  <span className="text-[#d97706]">Watch Center</span>
+                  <span className="text-[#3b82f6]">Watch Center</span>
                 </h1>
                 
                 <p className="text-xl text-gray-600 leading-relaxed mb-8">
@@ -45,7 +45,7 @@ function AboutUs() {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                  <button className="px-8 py-4 bg-[#d97706] text-white font-semibold hover:bg-[#c27005] transition-all shadow-lg hover:shadow-xl">
+                  <button className="px-8 py-4 bg-[#3b82f6] text-white font-semibold hover:bg-[#2563eb] transition-all shadow-lg hover:shadow-xl">
                     EXPLORE OUR SERVICES
                   </button>
                   <button className="px-8 py-4 border-2 border-gray-900 text-gray-900 font-semibold hover:bg-gray-900 hover:text-white transition-all">
@@ -57,8 +57,8 @@ function AboutUs() {
               {/* Quick Info Cards */}
               <div className="grid grid-cols-2 gap-4 pt-8 border-t-2 border-gray-200">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center">
-                    <MapPin className="text-[#d97706]" size={20} />
+                  <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
+                    <MapPin className="text-gray-900" size={20} />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-gray-900">Location</p>
@@ -67,8 +67,8 @@ function AboutUs() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center">
-                    <Award className="text-[#d97706]" size={20} />
+                  <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
+                    <Award className="text-gray-900" size={20} />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-gray-900">Experience</p>
@@ -83,16 +83,16 @@ function AboutUs() {
               {/* Main Circle */}
               <div className="relative w-full aspect-square max-w-[500px] mx-auto">
                 {/* Decorative Circles */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#d97706] to-orange-400 opacity-20 animate-pulse" />
-                <div className="absolute inset-8 rounded-full bg-gradient-to-br from-orange-200 to-orange-100 flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 opacity-60 animate-pulse" />
+                <div className="absolute inset-8 rounded-full bg-white flex items-center justify-center border-4 border-gray-200 shadow-2xl">
                   
                   {/* Center Content */}
                   <div className="text-center space-y-6 p-8">
-                    <Clock className="text-[#d97706] mx-auto" size={120} strokeWidth={1.5} />
+                    <Clock className="text-[#3b82f6] mx-auto" size={120} strokeWidth={1.5} />
                     
                     <div>
                       <div className="text-6xl font-bold text-gray-900 mb-2">25+</div>
-                      <div className="text-lg font-semibold text-[#d97706] tracking-wider">YEARS OF SERVICE</div>
+                      <div className="text-lg font-semibold text-[#3b82f6] tracking-wider">YEARS OF SERVICE</div>
                     </div>
 
                     <div className="flex justify-center gap-6 pt-4">
@@ -110,15 +110,15 @@ function AboutUs() {
                 </div>
 
                 {/* Floating Elements */}
-                <div className="absolute -top-4 -right-4 w-24 h-24 rounded-full bg-[#d97706] opacity-60 blur-xl animate-pulse" />
-                <div className="absolute -bottom-4 -left-4 w-32 h-32 rounded-full bg-orange-300 opacity-40 blur-xl animate-pulse delay-700" />
+                <div className="absolute -top-4 -right-4 w-24 h-24 rounded-full bg-gray-300 opacity-40 blur-xl animate-pulse" />
+                <div className="absolute -bottom-4 -left-4 w-32 h-32 rounded-full bg-gray-400 opacity-30 blur-xl animate-pulse delay-700" />
               </div>
 
               {/* Address Card - Floating */}
               <div className="absolute -bottom-8 left-0 right-0 mx-auto max-w-sm">
-                <div className="bg-white rounded-2xl p-6 shadow-2xl border-2 border-orange-200">
+                <div className="bg-white rounded-2xl p-6 shadow-2xl border-2 border-gray-300">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-[#d97706] flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-gray-900 flex items-center justify-center flex-shrink-0">
                       <MapPin className="text-white" size={24} />
                     </div>
                     <div>
@@ -137,7 +137,7 @@ function AboutUs() {
         </div>
 
         {/* Background Decoration */}
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-orange-50 to-transparent -z-10" />
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-gray-100 to-transparent -z-10" />
       </section>
 
       {/* ================= OUR STORY ================= */}
@@ -146,12 +146,12 @@ function AboutUs() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div>
-                <span className="inline-block mb-4 px-4 py-1 bg-orange-100 text-[#d97706] text-xs tracking-widest font-semibold rounded-full">
+                <span className="inline-block mb-4 px-4 py-1 bg-blue-100 text-[#3b82f6] text-xs tracking-widest font-semibold rounded-full">
                   OUR STORY
                 </span>
 
                 <h2 className="text-4xl md:text-5xl font-serif font-light mb-6 text-gray-900">
-                  A Legacy of <span className="text-[#d97706] font-semibold">Precision</span>
+                  A Legacy of <span className="text-[#3b82f6] font-semibold">Precision</span>
                 </h2>
 
                 <p className="text-gray-600 leading-relaxed mb-6">
@@ -182,7 +182,7 @@ function AboutUs() {
                     {/* Replace the paths below with your imported images: { img: watch1, name: "Luxury Watch" } */}
                     {[
                       { img: watch1, name: "Watch 1" },
-                      { img: watch2, name: "" },
+                      { img: watch2, name: "Watch 2" },
                       { img: watch3, name: "Watch 3" },
                       { img: watch4, name: "Watch 4" },
                       { img: watch5, name: "Watch 5" },
@@ -190,7 +190,7 @@ function AboutUs() {
                     ].map((item, index) => (
                       <div
                         key={index}
-                        className="group aspect-square rounded-2xl bg-gradient-to-br from-orange-100 to-orange-50 overflow-hidden hover:scale-110 transition-all duration-300 shadow-md hover:shadow-xl"
+                        className="group aspect-square rounded-2xl bg-white overflow-hidden hover:scale-110 transition-all duration-300 shadow-md hover:shadow-xl border-2 border-gray-300 hover:border-gray-900"
                       >
                         <img
                           src={item.img}
@@ -202,23 +202,23 @@ function AboutUs() {
                   </div>
 
                   {/* Stats Bar */}
-                  <div className="bg-gradient-to-r from-[#d97706] to-orange-500 rounded-2xl p-6 text-white text-center">
+                  <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-6 text-white text-center">
                     <div className="text-4xl font-bold mb-2">25+</div>
                     <div className="text-sm tracking-wider font-semibold">YEARS OF EXCELLENCE</div>
                   </div>
                 </div>
 
                 {/* Floating Elements */}
-                <div className="absolute -top-4 -left-4 w-20 h-20 bg-[#d97706] rounded-full flex items-center justify-center shadow-xl">
+                <div className="absolute -top-4 -left-4 w-20 h-20 bg-gray-900 rounded-full flex items-center justify-center shadow-xl">
                   <Award className="text-white" size={32} />
                 </div>
 
-                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl flex items-center justify-center shadow-xl rotate-12">
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl flex items-center justify-center shadow-xl rotate-12 border-2 border-gray-600">
                   <Clock className="text-white" size={40} strokeWidth={2} />
                 </div>
 
                 {/* Background Decoration */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-br from-orange-200 to-orange-100 rounded-3xl -z-10 scale-105 opacity-30" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-br from-gray-200 to-gray-100 rounded-3xl -z-10 scale-105 opacity-30" />
               </div>
             </div>
           </div>
@@ -238,17 +238,18 @@ function AboutUs() {
               ].map((stat, i) => (
                 <div
                   key={i}
-                  className="group bg-white rounded-2xl p-8 text-center border-2 border-gray-200
-                    hover:border-[#d97706] hover:-translate-y-2 
-                    transition-all duration-300 shadow-lg"
+                  className={`group rounded-2xl p-8 text-center border-2
+                    ${i % 2 === 0 ? 'bg-white border-gray-200 hover:border-gray-900' : 'bg-gray-900 border-gray-800 hover:border-gray-700'}
+                    hover:-translate-y-2 transition-all duration-300 shadow-lg`}
                 >
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-orange-100 flex items-center justify-center group-hover:bg-[#d97706] group-hover:scale-110 transition-all">
-                    <stat.icon className="text-[#d97706] group-hover:text-white transition-colors" size={28} />
+                  <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center group-hover:scale-110 transition-all
+                    ${i % 2 === 0 ? 'bg-gray-200 group-hover:bg-gray-900' : 'bg-gray-700 group-hover:bg-gray-600'}`}>
+                    <stat.icon className={`transition-colors ${i % 2 === 0 ? 'text-gray-900 group-hover:text-white' : 'text-white'}`} size={28} />
                   </div>
 
-                  <div className="text-5xl font-serif mb-2 text-[#d97706]">{stat.value}</div>
+                  <div className={`text-5xl font-serif mb-2 ${i % 2 === 0 ? 'text-gray-900' : 'text-white'}`}>{stat.value}</div>
 
-                  <div className="text-sm text-gray-600 tracking-wide uppercase font-medium">
+                  <div className={`text-sm tracking-wide uppercase font-medium ${i % 2 === 0 ? 'text-gray-600' : 'text-gray-300'}`}>
                     {stat.label}
                   </div>
                 </div>
@@ -264,7 +265,7 @@ function AboutUs() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-serif font-light mb-4 text-gray-900">
-                Our <span className="text-[#d97706] font-semibold">Services</span>
+                Our <span className="text-[#3b82f6] font-semibold">Services</span>
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 Comprehensive watch and clock services under one roof
@@ -297,11 +298,11 @@ function AboutUs() {
               ].map((service, i) => (
                 <div
                   key={i}
-                  className="group bg-gradient-to-br from-white to-orange-50 rounded-2xl p-8 border-2 border-orange-200
-                    hover:border-[#d97706] hover:shadow-2xl hover:-translate-y-2 
+                  className="group bg-white rounded-2xl p-8 border-2 border-gray-200
+                    hover:border-gray-900 hover:shadow-2xl hover:-translate-y-2 
                     transition-all duration-300"
                 >
-                  <div className="w-20 h-20 mb-6 rounded-full bg-[#d97706] flex items-center justify-center group-hover:scale-110 transition-all">
+                  <div className="w-20 h-20 mb-6 rounded-full bg-gray-900 flex items-center justify-center group-hover:scale-110 transition-all">
                     <service.icon className="text-white" size={36} />
                   </div>
 
@@ -312,7 +313,7 @@ function AboutUs() {
                   <ul className="space-y-3">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center gap-3 text-gray-700">
-                        <CheckCircle className="text-[#d97706] flex-shrink-0" size={18} />
+                        <CheckCircle className="text-gray-900 flex-shrink-0" size={18} />
                         <span className="text-sm">{feature}</span>
                       </li>
                     ))}
@@ -330,7 +331,7 @@ function AboutUs() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-serif font-light mb-4 text-gray-900">
-                Why Choose <span className="text-[#d97706] font-semibold">Us</span>?
+                Why Choose <span className="text-[#3b82f6] font-semibold">Us</span>?
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 What makes Thilani Watch Center the preferred choice in Moratuwa
@@ -372,15 +373,15 @@ function AboutUs() {
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="bg-white rounded-xl p-8 border-2 border-gray-200 hover:border-[#d97706] transition-all duration-300 hover:shadow-xl"
+                  className={`rounded-xl p-8 border-2 transition-all duration-300 hover:shadow-xl`}
                 >
-                  <div className="w-14 h-14 mb-4 rounded-full bg-orange-100 flex items-center justify-center">
-                    <item.icon className="text-[#d97706]" size={24} />
+                  <div className={`w-14 h-14 mb-4 rounded-full flex items-center justify-center`}>
+                    <item.icon className={``} size={24} />
                   </div>
 
-                  <h3 className="text-xl font-semibold mb-3 text-gray-900">{item.title}</h3>
+                  <h3 className={`text-xl font-semibold mb-3 `}>{item.title}</h3>
 
-                  <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                  <p className={`leading-relaxed `}>{item.description}</p>
                 </div>
               ))}
             </div>
@@ -394,10 +395,10 @@ function AboutUs() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-20 items-center">
               <div className="relative order-2 md:order-1">
-                <div className="aspect-square rounded-2xl bg-gradient-to-br from-orange-100 to-orange-50 p-12 flex items-center justify-center border-4 border-orange-200 shadow-2xl">
+                <div className="aspect-square rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 p-12 flex items-center justify-center border-4 border-gray-700 shadow-2xl">
                   <div className="text-center">
-                    <Watch className="text-[#d97706] mx-auto mb-6" size={100} strokeWidth={1} />
-                    <p className="text-2xl font-serif text-gray-900 italic">
+                    <Watch className="text-white mx-auto mb-6" size={100} strokeWidth={1} />
+                    <p className="text-2xl font-serif text-white italic">
                       "Time is precious, we treat it that way"
                     </p>
                   </div>
@@ -406,13 +407,13 @@ function AboutUs() {
 
               <div className="order-1 md:order-2">
                 <h2 className="text-4xl md:text-5xl font-serif font-light mb-6 text-gray-900">
-                  Our <span className="text-[#d97706] font-semibold">Values</span>
+                  Our <span className="text-[#3b82f6] font-semibold">Values</span>
                 </h2>
 
                 <div className="space-y-6">
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-gray-900 flex items-center gap-2">
-                      <CheckCircle className="text-[#d97706]" size={20} />
+                      <CheckCircle className="text-gray-900" size={20} />
                       Quality First
                     </h3>
                     <p className="text-gray-600 leading-relaxed pl-7">
@@ -423,7 +424,7 @@ function AboutUs() {
 
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-gray-900 flex items-center gap-2">
-                      <CheckCircle className="text-[#d97706]" size={20} />
+                      <CheckCircle className="text-gray-900" size={20} />
                       Customer Trust
                     </h3>
                     <p className="text-gray-600 leading-relaxed pl-7">
@@ -434,7 +435,7 @@ function AboutUs() {
 
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-gray-900 flex items-center gap-2">
-                      <CheckCircle className="text-[#d97706]" size={20} />
+                      <CheckCircle className="text-gray-900" size={20} />
                       Craftsmanship
                     </h3>
                     <p className="text-gray-600 leading-relaxed pl-7">
@@ -445,7 +446,7 @@ function AboutUs() {
 
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-gray-900 flex items-center gap-2">
-                      <CheckCircle className="text-[#d97706]" size={20} />
+                      <CheckCircle className="text-gray-900" size={20} />
                       Community Focus
                     </h3>
                     <p className="text-gray-600 leading-relaxed pl-7">
@@ -465,7 +466,7 @@ function AboutUs() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-serif font-light mb-4 text-gray-900">
-                Visit Our <span className="text-[#d97706] font-semibold">Store</span>
+                Visit Our <span className="text-[#3b82f6] font-semibold">Store</span>
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 Located in the heart of Moratuwa on New Galle Road
@@ -473,9 +474,9 @@ function AboutUs() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="bg-white rounded-2xl p-10 border-2 border-orange-200 shadow-xl">
+              <div className="bg-white rounded-2xl p-10 border-2 border-blue-200 shadow-xl">
                 <div className="flex items-start gap-4 mb-6">
-                  <div className="w-14 h-14 rounded-full bg-[#d97706] flex items-center justify-center flex-shrink-0">
+                  <div className="w-14 h-14 rounded-full bg-[#3b82f6] flex items-center justify-center flex-shrink-0">
                     <MapPin className="text-white" size={24} />
                   </div>
                   <div>
@@ -492,7 +493,7 @@ function AboutUs() {
 
                 <div className="space-y-4 pt-6 border-t-2 border-gray-200">
                   <div className="flex items-center gap-3">
-                    <Clock className="text-[#d97706]" size={20} />
+                    <Clock className="text-[#3b82f6]" size={20} />
                     <div>
                       <p className="font-semibold text-gray-900">Opening Hours</p>
                       <p className="text-sm text-gray-600">Monday - Saturday: 9:00 AM - 7:00 PM</p>
@@ -500,7 +501,7 @@ function AboutUs() {
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <Watch className="text-[#d97706]" size={20} />
+                    <Watch className="text-[#3b82f6]" size={20} />
                     <div>
                       <p className="font-semibold text-gray-900">Services Available</p>
                       <p className="text-sm text-gray-600">
@@ -514,14 +515,11 @@ function AboutUs() {
               <div className="relative h-[400px] rounded-2xl overflow-hidden border-2 border-gray-300 shadow-xl">
                 {/* Map Placeholder */}
                 <div className="absolute inset-0 bg-gray-100 flex items-center justify-center">
-                  <iframe
-                        title="Thilani Watch Centre - Map"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1977.6273154434104!2d79.88039761606265!3d6.775157185112062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae24509c8fab27f%3A0x165332b3d90ce90e!2sThilani%20Watch%20Centre!5e0!3m2!1sen!2slk!4v1704258697452!5m2!1sen!2slk"
-                        className="absolute inset-0 w-full h-full border-0"
-                        allowFullScreen
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                    />
+                  <div className="text-center">
+                    <MapPin className="text-[#3b82f6] mx-auto mb-4" size={60} />
+                    <p className="text-gray-700 font-medium text-lg">Find Us Here</p>
+                    <p className="text-gray-500 text-sm mt-2">New Galle Road, Moratuwa</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -531,28 +529,28 @@ function AboutUs() {
 
       {/* ================= CTA ================= */}
       <LazyLoad>
-        <section className="py-28 bg-gradient-to-br from-orange-50 to-white relative overflow-hidden">
+        <section className="py-28 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
           {/* Background Effects */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(217,119,6,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(217,119,6,0.06)_1px,transparent_1px)] bg-[size:50px_50px]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#d97706]/15 blur-[150px] rounded-full" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#3b82f6]/10 blur-[150px] rounded-full" />
 
           <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-4xl md:text-6xl font-serif font-light mb-6 text-gray-900">
+            <h2 className="text-4xl md:text-6xl font-serif font-light mb-6 text-white">
               Ready to Experience Our{" "}
-              <span className="text-[#d97706] font-semibold">Expertise</span>?
+              <span className="text-[#3b82f6] font-semibold">Expertise</span>?
             </h2>
 
-            <p className="text-gray-600 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-gray-300 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
               Visit us today or get in touch. We're here to help with all your watch and clock
               needs.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button className="inline-flex items-center justify-center gap-3 px-12 py-5 bg-[#d97706] text-white font-semibold tracking-widest hover:bg-[#c27005] hover:shadow-[0_0_40px_rgba(217,119,6,0.4)] transition-all">
+              <button className="inline-flex items-center justify-center gap-3 px-12 py-5 bg-[#3b82f6] text-white font-semibold tracking-widest hover:bg-[#2563eb] hover:shadow-[0_0_40px_rgba(59,130,246,0.5)] transition-all">
                 VISIT OUR STORE
               </button>
 
-              <button className="inline-flex items-center justify-center gap-3 px-12 py-5 border-2 border-[#d97706] text-[#d97706] hover:bg-[#d97706] hover:text-white font-semibold tracking-widest transition-all">
+              <button className="inline-flex items-center justify-center gap-3 px-12 py-5 border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold tracking-widest transition-all">
                 CONTACT US
               </button>
             </div>

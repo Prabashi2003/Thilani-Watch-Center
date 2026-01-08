@@ -53,20 +53,20 @@ function ContactUs() {
       {/* ================= HERO ================= */}
       <section className="relative h-[20vh] flex items-center justify-center overflow-hidden text-gray-900">
         {/* Grid Overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(217,119,6,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(217,119,6,0.08)_1px,transparent_1px)] bg-[size:50px_50px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
 
         {/* Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white to-orange-50" />
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50" />
 
-        {/* Glow Effects */}
-        <div className="absolute top-1/8 -left-32 w-96 h-96 bg-[#d97706]/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#d97706]/15 blur-[120px] rounded-full" />
+        {/* Glow Effects - Subtle gray instead of blue */}
+        <div className="absolute top-1/8 -left-32 w-96 h-96 bg-gray-200/20 blur-[120px] rounded-full" />
+        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-gray-300/15 blur-[120px] rounded-full" />
 
         {/* Content */}
         <div className="relative z-5 text-center px-8 max-w-4xl animate-fadeIn">
 
           <h1 className="text-4xl md:text-5xl font-serif font-light mb-6 text-gray-900">
-            Contact <span className="text-[#d97706] italic font-semibold">Us</span>
+            Contact <span className="text-[#3b82f6] italic font-semibold">Us</span>
           </h1>
 
           <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
@@ -109,13 +109,13 @@ function ContactUs() {
                         <div
                         key={i}
                         className="group bg-white rounded-2xl p-8 text-center border-2 border-gray-200
-                        hover:border-[#d97706] hover:-translate-y-2 
-                        transition-all duration-300 shadow-lg hover:shadow-[0_20px_60px_rgba(217,119,6,0.2)]"
+                        hover:border-gray-900 hover:-translate-y-2 
+                        transition-all duration-300 shadow-lg hover:shadow-xl"
                         >
-                        <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-orange-100 flex items-center justify-center
-                            group-hover:bg-[#d97706] group-hover:scale-110 transition-all duration-300"
+                        <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gray-200 flex items-center justify-center
+                            group-hover:bg-gray-900 group-hover:scale-110 transition-all duration-300"
                         >
-                            <item.icon className="text-[#d97706] group-hover:text-white transition-colors" size={28} />
+                            <item.icon className="text-gray-900 group-hover:text-white transition-colors" size={28} />
                         </div>
 
                         <h3 className="text-gray-900 font-semibold text-lg mb-2 tracking-wide">
@@ -125,12 +125,12 @@ function ContactUs() {
                         {/* Info */}
                         {Array.isArray(item.info) ? (
                             item.info.map((text, idx) => (
-                            <p key={idx} className="text-[#d97706] text-sm font-medium">
+                            <p key={idx} className="text-gray-900 text-sm font-medium">
                                 {text}
                             </p>
                             ))
                         ) : (
-                            <p className="text-[#d97706] text-sm font-medium">{item.info}</p>
+                            <p className="text-gray-900 text-sm font-medium">{item.info}</p>
                         )}
 
                         <p className="text-gray-500 text-xs mt-1">{item.subInfo}</p>
@@ -149,7 +149,7 @@ function ContactUs() {
               {/* FORM */}
               <div>
                 <h2 className="text-4xl md:text-5xl font-serif font-light mb-4 text-gray-900">
-                  Send Us a <span className="text-[#d97706] font-semibold">Message</span>
+                  Send Us a <span className="text-[#3b82f6] font-semibold">Message</span>
                 </h2>
 
                 <p className="text-gray-600 mb-10 leading-relaxed">
@@ -170,7 +170,7 @@ function ContactUs() {
                       onChange={handleChange}
                       required
                       className="w-full px-6 py-4 bg-white border-2 border-gray-300 rounded-lg 
-                        text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#d97706] 
+                        text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-900 
                         transition-all duration-300"
                       placeholder="John Doe"
                     />
@@ -189,7 +189,7 @@ function ContactUs() {
                         onChange={handleChange}
                         required
                         className="w-full px-6 py-4 bg-white border-2 border-gray-300 rounded-lg 
-                          text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#d97706] 
+                          text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-900 
                           transition-all duration-300"
                         placeholder="john@example.com"
                       />
@@ -205,7 +205,7 @@ function ContactUs() {
                         value={formData.phone}
                         onChange={handleChange}
                         className="w-full px-6 py-4 bg-white border-2 border-gray-300 rounded-lg 
-                          text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#d97706] 
+                          text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-900 
                           transition-all duration-300"
                         placeholder="+94 00 000-0000"
                       />
@@ -223,7 +223,7 @@ function ContactUs() {
                       onChange={handleChange}
                       required
                       className="w-full px-6 py-4 bg-white border-2 border-gray-300 rounded-lg 
-                        text-gray-900 focus:outline-none focus:border-[#d97706] 
+                        text-gray-900 focus:outline-none focus:border-gray-900 
                         transition-all duration-300"
                     >
                       <option value="">Select a subject</option>
@@ -247,7 +247,7 @@ function ContactUs() {
                       required
                       rows={6}
                       className="w-full px-6 py-4 bg-white border-2 border-gray-300 rounded-lg 
-                        text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#d97706] 
+                        text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-900 
                         transition-all duration-300 resize-none"
                       placeholder="Tell us how we can help you..."
                     />
@@ -258,8 +258,8 @@ function ContactUs() {
                     type="submit"
                     disabled={isSubmitted}
                     className="group w-full inline-flex items-center justify-center gap-3 px-12 py-5 
-                      bg-[#d97706] text-white font-semibold tracking-widest
-                      hover:bg-[#c27005] hover:shadow-[0_0_40px_rgba(217,119,6,0.4)] 
+                      bg-[#3b82f6] text-white font-semibold tracking-widest
+                      hover:bg-[#2563eb] hover:shadow-lg
                       disabled:opacity-50 disabled:cursor-not-allowed
                       transition-all duration-300"
                   >
@@ -296,7 +296,7 @@ function ContactUs() {
                 </div>
 
                 {/* Additional Info */}
-                <div className="bg-orange-50 rounded-2xl p-8 border-2 border-orange-200">
+                <div className="bg-gray-50 rounded-2xl p-8 border-2 border-gray-300">
                   <h3 className="text-2xl font-serif mb-6 text-gray-900">Visit Our Showroom</h3>
 
                   <p className="text-gray-700 leading-relaxed mb-6">
@@ -306,7 +306,7 @@ function ContactUs() {
 
                   <div className="space-y-4 mb-8">
                     <div className="flex items-start gap-3">
-                      <MapPin className="text-[#d97706] mt-1 flex-shrink-0" size={20} />
+                      <MapPin className="text-gray-900 mt-1 flex-shrink-0" size={20} />
                       <div>
                         <p className="text-gray-900 font-semibold">Address</p>
                         <p className="text-gray-600 text-sm">
@@ -318,7 +318,7 @@ function ContactUs() {
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <Phone className="text-[#d97706] mt-1 flex-shrink-0" size={20} />
+                      <Phone className="text-gray-900 mt-1 flex-shrink-0" size={20} />
                       <div>
                         <p className="text-gray-900 font-semibold">Phone</p>
                         <p className="text-gray-600 text-sm">+94 78 890 7569 | +94 9396 600</p>
@@ -326,7 +326,7 @@ function ContactUs() {
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <Mail className="text-[#d97706] mt-1 flex-shrink-0" size={20} />
+                      <Mail className="text-gray-900 mt-1 flex-shrink-0" size={20} />
                       <div>
                         <p className="text-gray-900 font-semibold">Email</p>
                         <p className="text-gray-600 text-sm">thilaniwatchcenter@gmail.com</p>
@@ -347,9 +347,9 @@ function ContactUs() {
                         <a
                           key={i}
                           href={social.href}
-                          className="w-12 h-12 rounded-full bg-white border-2 border-[#d97706] flex items-center justify-center
-                            hover:bg-[#d97706] hover:text-white transition-all duration-300
-                            text-[#d97706]"
+                          className="w-12 h-12 rounded-full bg-white border-2 border-gray-900 flex items-center justify-center
+                            hover:bg-gray-900 hover:text-white transition-all duration-300
+                            text-gray-900"
                         >
                           <social.icon size={20} />
                         </a>
@@ -369,7 +369,7 @@ function ContactUs() {
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-serif font-light mb-4 text-gray-900">
-                Frequently Asked <span className="text-[#d97706] font-semibold">Questions</span>
+                Frequently Asked <span className="text-[#3b82f6] font-semibold">Questions</span>
               </h2>
               <p className="text-gray-600">Quick answers to common inquiries</p>
             </div>
@@ -389,17 +389,17 @@ function ContactUs() {
                 {
                   question: "What payment methods do you accept?",
                   answer:
-                    "We accept all major credit cards, bank transfers,  and offer flexible financing options for qualified buyers.",
+                    "We accept all major credit cards, bank transfers, and offer flexible financing options for qualified buyers.",
                 },
               ].map((item, i) => (
                 <details
                   key={i}
                   className="group bg-white rounded-xl border-2 border-gray-300 
-                    hover:border-[#d97706] transition-all duration-300"
+                    hover:border-gray-900 transition-all duration-300"
                 >
                   <summary className="cursor-pointer px-8 py-6 flex justify-between items-center">
                     <h3 className="font-semibold text-gray-900 text-lg pr-4">{item.question}</h3>
-                    <span className="text-[#d97706] text-2xl group-open:rotate-45 transition-transform">
+                    <span className="text-gray-900 text-2xl group-open:rotate-45 transition-transform">
                       +
                     </span>
                   </summary>
@@ -415,22 +415,22 @@ function ContactUs() {
 
       {/* ================= CTA SECTION ================= */}
       <LazyLoad>
-        <section className="py-28 bg-gradient-to-br from-orange-50 to-white relative overflow-hidden">
+        <section className="py-28 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
           {/* Background Effects */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(217,119,6,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(217,119,6,0.06)_1px,transparent_1px)] bg-[size:50px_50px]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#d97706]/15 blur-[150px] rounded-full" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#3b82f6]/10 blur-[150px] rounded-full" />
 
           <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-4xl md:text-6xl font-serif font-light mb-6 text-gray-900">
-              Ready to Find Your <span className="text-[#d97706] font-semibold">Perfect Timepiece</span>?
+            <h2 className="text-4xl md:text-6xl font-serif font-light mb-6 text-white">
+              Ready to Find Your <span className="text-[#3b82f6] font-semibold">Perfect Timepiece</span>?
             </h2>
 
-            <p className="text-gray-600 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
-              Visit our showroom to view our gratest collection today.
+            <p className="text-gray-300 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+              Visit our showroom to view our greatest collection today.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button className="inline-flex items-center justify-center gap-3 px-12 py-5 border-2 border-[#d97706] text-[#d97706] hover:bg-[#d97706] hover:text-white font-semibold tracking-widest transition-all">
+              <button className="inline-flex items-center justify-center gap-3 px-12 py-5 bg-[#3b82f6] text-white hover:bg-[#2563eb] font-semibold tracking-widest transition-all">
                 EXPLORE COLLECTION
               </button>
             </div>
