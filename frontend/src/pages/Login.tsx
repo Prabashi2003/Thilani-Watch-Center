@@ -1,16 +1,44 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { getAllUsers } from "../api/userAPI";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ email, password });
+    try {
+      setLoading(true);
+
+      const users = await getAllUsers(); // fetch all users
+    
+      const user = users.find(
+        (u) => u.email === email && u.password === password
+      );
+
+      if (!user) {
+        alert("Invalid email or password");
+        return;
+      }
+
+      // Save user to localStorage (or session)
+      localStorage.setItem("user", JSON.stringify(user));
+      alert("Login successful!");
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black">
@@ -72,9 +100,9 @@ const Login = () => {
         <p className="text-sm text-center text-gray-400 mt-6">
           Don’t have an account?{" "}
           <Link to='/signup'>
-          <span className="text-yellow-500 hover:underline cursor-pointer">
-            Sign Up
-          </span>
+            <span className="text-yellow-500 hover:underline cursor-pointer">
+              Sign Up
+            </span>
           </Link>
         </p>
       </div>

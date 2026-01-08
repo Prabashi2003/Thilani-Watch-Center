@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { createUser } from "../api/userAPI"; 
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -11,7 +12,10 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [loading, setLoading] = useState(false); // optional loading state
+  const navigate = useNavigate(); // to redirect after signup
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
@@ -19,26 +23,41 @@ const Signup = () => {
       return;
     }
 
-    console.log({ name, email, password });
+    try {
+      setLoading(true);
+      const newUser = await createUser({ name, email, password });
+      alert("Account created successfully!");
+      setName("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+
+      // Redirect to login page
+      navigate("/login");
+    } catch (error: any) {
+      console.error(error);
+      if (error.response && error.response.data?.message) {
+        alert(`Error: ${error.response.data.message}`);
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black">
       <div className="bg-gray-950 text-white p-8 rounded-2xl shadow-2xl w-full max-w-md border border-yellow-600/40">
-
         <h1 className="text-3xl font-bold text-center text-yellow-500">
           Thilani Watch Center
         </h1>
-        <p className="text-center text-gray-400 mb-6">
-          Create Your Account
-        </p>
+        <p className="text-center text-gray-400 mb-6">Create Your Account</p>
 
         <form onSubmit={handleSubmit}>
           {/* Name */}
           <div className="mb-4">
-            <label className="block text-sm text-gray-300 mb-1">
-              Full Name
-            </label>
+            <label className="block text-sm text-gray-300 mb-1">Full Name</label>
             <input
               type="text"
               value={name}
@@ -50,9 +69,7 @@ const Signup = () => {
 
           {/* Email */}
           <div className="mb-4">
-            <label className="block text-sm text-gray-300 mb-1">
-              Email Address
-            </label>
+            <label className="block text-sm text-gray-300 mb-1">Email Address</label>
             <input
               type="email"
               value={email}
@@ -64,10 +81,7 @@ const Signup = () => {
 
           {/* Password */}
           <div className="mb-4 relative">
-            <label className="block text-sm text-gray-300 mb-1">
-              Password
-            </label>
-
+            <label className="block text-sm text-gray-300 mb-1">Password</label>
             <input
               type={showPassword ? "text" : "password"}
               value={password}
@@ -75,7 +89,6 @@ const Signup = () => {
               required
               className="w-full px-4 py-2 pr-10 rounded-lg bg-gray-900 border border-gray-700 focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 outline-none"
             />
-
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
@@ -87,10 +100,7 @@ const Signup = () => {
 
           {/* Confirm Password */}
           <div className="mb-6 relative">
-            <label className="block text-sm text-gray-300 mb-1">
-              Confirm Password
-            </label>
-
+            <label className="block text-sm text-gray-300 mb-1">Confirm Password</label>
             <input
               type={showConfirmPassword ? "text" : "password"}
               value={confirmPassword}
@@ -98,33 +108,27 @@ const Signup = () => {
               required
               className="w-full px-4 py-2 pr-10 rounded-lg bg-gray-900 border border-gray-700 focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 outline-none"
             />
-
             <button
               type="button"
-              onClick={() =>
-                setShowConfirmPassword(!showConfirmPassword)
-              }
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
               className="absolute right-3 top-9 text-gray-400 hover:text-yellow-500"
             >
-              {showConfirmPassword ? (
-                <EyeOff size={20} />
-              ) : (
-                <Eye size={20} />
-              )}
+              {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
           </div>
 
           <button
             type="submit"
-            className="w-full bg-yellow-500 text-black font-semibold py-2 rounded-lg hover:bg-yellow-400 transition"
+            disabled={loading}
+            className="w-full bg-yellow-500 text-black font-semibold py-2 rounded-lg hover:bg-yellow-400 transition disabled:opacity-50"
           >
-            Create Account
+            {loading ? "Creating..." : "Create Account"}
           </button>
         </form>
 
         <p className="text-sm text-center text-gray-400 mt-6">
           Already have an account?{" "}
-          <Link to='/login'>
+          <Link to="/login">
             <span className="text-yellow-500 hover:underline cursor-pointer">
               Login
             </span>

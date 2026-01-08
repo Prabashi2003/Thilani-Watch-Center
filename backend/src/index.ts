@@ -6,6 +6,7 @@ import categoryRoutes from "./routes/categoryRoutes";
 import brandRoutes from "./routes/brandRoutes";
 import orderRoutes from "./routes/orderRoutes";
 import cartRoutes from "./routes/cartRouter";
+import userRoutes from "./routes/userRoutes";
 
 
 const cors = require('cors');
@@ -22,6 +23,7 @@ app.use("/api/category", categoryRoutes);
 app.use("/api/brand", brandRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/cart",cartRoutes);
+app.use("/api/users",userRoutes);
 
 app.get("/", (_, res) => {
   res.send("Watch Backend Running 🚀");
