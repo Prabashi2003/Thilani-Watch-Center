@@ -8,7 +8,6 @@ import orderRoutes from "./routes/orderRoutes";
 import cartRoutes from "./routes/cartRouter";
 import userRoutes from "./routes/userRoutes";
 
-
 const cors = require('cors');
 
 dotenv.config();
@@ -24,6 +23,7 @@ app.use("/api/brand", brandRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/cart",cartRoutes);
 app.use("/api/users",userRoutes);
+
 
 app.get("/", (_, res) => {
   res.send("Watch Backend Running 🚀");

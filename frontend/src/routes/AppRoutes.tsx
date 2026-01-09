@@ -4,7 +4,6 @@ import Home from "../pages/Home";
 import Shop from "../pages/Shop";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
-import WatchInfo from "../pages/WatchDetails";
 import SidebarLayout from "../layout/SlideBar";
 import Overview from "../pages/Overview";
 import Orders from "../pages/Orders";
@@ -16,6 +15,7 @@ import AboutUs from "../pages/AboutUs";
 import Cart from "../pages/Cart";
 import CheckoutPage from "../pages/Checkout";
 import UserDashboard from "../pages/UserDashboard";
+import WatchDetails from "../pages/WatchDetails";
 
 const AppRoutes = () => {
     return (
@@ -23,12 +23,13 @@ const AppRoutes = () => {
             <Route element={<MainLayout />}>
                 <Route path="/" element={<Home />} />
                 <Route path="/shop" element={<Shop />} />
-                <Route path="/watchInfo" element={<WatchInfo />} />
+                <Route path="/watchInfo/:id" element={<WatchDetails />} />
                 <Route path="/ContactUs" element={<ContactUs />} />
                 <Route path="/AboutUs" element={<AboutUs />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<CheckoutPage />} />
                 <Route path="/userdashboard" element={<UserDashboard />} />
+                
             </Route>
 
             <Route path="/login" element={<Login />} />

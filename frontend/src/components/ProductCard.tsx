@@ -3,8 +3,12 @@ import { useState } from "react";
 
 import img from '../assets/images/watchimg.jpg';
 import { Link } from "react-router-dom";
+import type { Watch } from "../types/watch";
+interface ProductCardProps {
+  watch: Watch;
+}
 
-function ProductCard() {
+const ProductCard: React.FC<ProductCardProps> = ({ watch }) => {
   const [wishlisted, setWishlisted] = useState(false);
 
   const handleAddToCart = () => {
@@ -21,11 +25,6 @@ function ProductCard() {
 
       <div className="group relative rounded-xl border bg-white p-4 shadow-sm transition hover:shadow-lg">
 
-        {/* Promo badge */}
-        <span className="absolute left-3 top-3 rounded bg-black px-2 py-1 text-xs text-white z-10">
-          PROMO DEAL
-        </span>
-
         {/* Wishlist */}
         <button
           onClick={handleWishlist}
@@ -38,7 +37,7 @@ function ProductCard() {
         {/* Image */}
         <div className="relative flex h-44 items-center justify-center overflow-hidden">
 
-          <Link to='/watchInfo'>
+          <Link to={`/watchInfo/${watch._id}`}>
             <img
               src={img}
               alt="Watch"
@@ -56,15 +55,15 @@ function ProductCard() {
         </div>
 
         {/* Info */}
-        <Link to='/watchInfo'>
+        
+        <Link to={`/watchInfo/${watch._id}`}>
         <div className="mt-4">
-          <p className="text-sm font-semibold">SEIKO</p>
+          <p className="text-sm font-semibold">{watch.name}</p>
           <p className="mt-1 text-sm text-gray-600 line-clamp-2">
-            Seiko Automatic Divers Men's Watch
+            {watch.description[0]}
           </p>
           <div className="mt-2 flex items-center gap-2">
-            <span className="font-semibold">$209.00</span>
-            <span className="text-sm text-gray-400 line-through">$230.00</span>
+            <span className="font-semibold">Rs.{watch.price}.00</span>
           </div>
         </div>
         </Link>

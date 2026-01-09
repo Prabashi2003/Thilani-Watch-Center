@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { getAllWatches, createWatch, updateWatch, deleteWatch } from '../api/watchApi';
 import type { Watch } from '../types/watch';
-import { 
-  Plus, 
-  Search, 
-  Edit2, 
-  Trash2, 
-  Package, 
-  Tag, 
-  Layers, 
-  DollarSign, 
+import type { Category } from '../types/category';
+import type { Brand } from '../types/Brand';
+
+import {
+  Plus,
+  Search,
+  Edit2,
+  Trash2,
+  Package,
+  Tag,
+  Layers,
+  DollarSign,
   X,
   PlusCircle,
   AlertCircle
 } from 'lucide-react';
+
+import { getAllCategories } from "../api/categoryApi";
+import { getAllBrands } from "../api/brandApi";
+
+
+
 
 const Inventory = () => {
   const [watches, setWatches] = useState<Watch[]>([]);
@@ -22,6 +31,30 @@ const Inventory = () => {
   const [currentId, setCurrentId] = useState<string | null>(null);
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState<'all' | 'active' | 'inactive'>('all');
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [brands, setBrands] = useState<Brand[]>([]);
+
+  const [uploading, setUploading] = useState(false);
+
+
+  const uploadToCloudinary = async (file: File): Promise<string> => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "unsigned_preset"); // I explain below
+    formData.append("cloud_name", "YOUR_CLOUD_NAME");
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await res.json();
+    return data.secure_url;
+  };
+
 
   const initialState: Partial<Watch> = {
     name: '', price: undefined, stock: undefined,
@@ -30,7 +63,24 @@ const Inventory = () => {
 
   const [formData, setFormData] = useState<Partial<Watch>>(initialState);
 
-  useEffect(() => { loadInventory(); }, []);
+  const loadMeta = async () => {
+    try {
+      const [catData, brandData] = await Promise.all([
+        getAllCategories(),
+        getAllBrands()
+      ]);
+      setCategories(catData);
+      setBrands(brandData);
+    } catch (err) {
+      console.error("Meta fetch failed", err);
+    }
+  };
+
+
+  useEffect(() => {
+    loadInventory();
+    loadMeta();
+  }, []);
 
   const loadInventory = async () => {
     try {
@@ -101,7 +151,7 @@ const Inventory = () => {
   return (
     <div className="min-h-screen bg-slate-50 p-4 md:p-8 font-sans text-slate-900">
       <div className="max-w-6xl mx-auto">
-        
+
         {/* Header & Stats */}
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
           <div>
@@ -110,7 +160,7 @@ const Inventory = () => {
           </div>
           <div className="flex gap-4">
             <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex items-center gap-3">
-              <div className="p-2 bg-indigo-50 text-indigo-600 rounded-lg"><Package size={20}/></div>
+              <div className="p-2 bg-indigo-50 text-indigo-600 rounded-lg"><Package size={20} /></div>
               <div><p className="text-xs text-slate-500 uppercase font-bold">Total items</p><p className="text-lg font-bold">{watches.length}</p></div>
             </div>
           </div>
@@ -120,25 +170,25 @@ const Inventory = () => {
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden mb-8">
           <div className="border-b border-slate-100 p-6 flex justify-between items-center bg-slate-50/50">
             <h3 className="text-lg font-semibold flex items-center gap-2">
-              {isEditing ? <Edit2 size={18} className="text-indigo-600"/> : <PlusCircle size={18} className="text-emerald-600"/>}
+              {isEditing ? <Edit2 size={18} className="text-indigo-600" /> : <PlusCircle size={18} className="text-emerald-600" />}
               {isEditing ? "Modify Timepiece" : "Add New Watch"}
             </h3>
             {isEditing && (
               <button onClick={resetForm} className="text-slate-400 hover:text-slate-600 transition">
-                <X size={20}/>
+                <X size={20} />
               </button>
             )}
           </div>
-          
+
           <form onSubmit={handleSubmit} className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-1">
                 <label className="text-xs font-bold text-slate-500 uppercase ml-1">Model Name</label>
-                <input 
-                  placeholder="e.g. Submariner Date" 
-                  value={formData.name} 
-                  onChange={e => setFormData({...formData, name: e.target.value})} 
-                  required 
+                <input
+                  placeholder="e.g. Submariner Date"
+                  value={formData.name}
+                  onChange={e => setFormData({ ...formData, name: e.target.value })}
+                  required
                   className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition"
                 />
               </div>
@@ -146,47 +196,64 @@ const Inventory = () => {
               <div className="space-y-1">
                 <label className="text-xs font-bold text-slate-500 uppercase ml-1">Price (Rs.)</label>
                 <div className="relative">
-                  <input 
-                    type="number" 
-                    placeholder="0.00" 
-                    value={formData.price || ''} 
-                    onChange={e => setFormData({...formData, price: Number(e.target.value)})} 
-                    required 
+                  <input
+                    type="number"
+                    placeholder="0.00"
+                    value={formData.price || ''}
+                    onChange={e => setFormData({ ...formData, price: Number(e.target.value) })}
+                    required
                     className="w-full p-3 pl-8 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition"
                   />
                 </div>
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-bold text-slate-500 uppercase ml-1">Category</label>
-                <input 
-                  placeholder="Category ID" 
-                  value={formData.category || ''} 
-                  onChange={e => setFormData({...formData, category: e.target.value})} 
-                  required 
-                  className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition"
-                />
+                <label className="text-xs font-bold text-slate-500 uppercase ml-1">
+                  Category
+                </label>
+                <select
+                  value={formData.category || ""}
+                  onChange={e => setFormData({ ...formData, category: e.target.value })}
+                  required
+                  className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl"
+                >
+                  <option value="">Select category</option>
+                  {categories.map(cat => (
+                    <option key={cat._id} value={cat._id}>
+                      {cat.name}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-bold text-slate-500 uppercase ml-1">Brand</label>
-                <input 
-                  placeholder="Brand ID" 
-                  value={formData.brand || ''} 
-                  onChange={e => setFormData({...formData, brand: e.target.value})} 
-                  required 
-                  className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition"
-                />
+                <label className="text-xs font-bold text-slate-500 uppercase ml-1">
+                  Brand
+                </label>
+                <select
+                  value={formData.brand || ""}
+                  onChange={e => setFormData({ ...formData, brand: e.target.value })}
+                  required
+                  className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl"
+                >
+                  <option value="">Select brand</option>
+                  {brands.map(brand => (
+                    <option key={brand._id} value={brand._id}>
+                      {brand.name}
+                    </option>
+                  ))}
+                </select>
               </div>
+
 
               <div className="space-y-1 md:col-span-2">
                 <label className="text-xs font-bold text-slate-500 uppercase ml-1">Stock Level</label>
-                <input 
-                  type="number" 
-                  placeholder="Quantity in vault" 
-                  value={formData.stock || ''} 
-                  onChange={e => setFormData({...formData, stock: Number(e.target.value)})} 
-                  required 
+                <input
+                  type="number"
+                  placeholder="Quantity in vault"
+                  value={formData.stock || ''}
+                  onChange={e => setFormData({ ...formData, stock: Number(e.target.value) })}
+                  required
                   className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition"
                 />
               </div>
@@ -194,39 +261,41 @@ const Inventory = () => {
 
             {/* Arrays Section (Description & Images) */}
             <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-4">
-               <div>
-                  <label className="text-xs font-bold text-slate-500 uppercase flex items-center gap-2 mb-2">
-                    <Layers size={14}/> Features
-                  </label>
-                  {formData.description?.map((desc, index) => (
-                    <div key={index} className="flex gap-2 mb-2">
-                      <input
-                        value={desc}
-                        onChange={e => {
-                          const newDesc = [...(formData.description || [])];
-                          newDesc[index] = e.target.value;
-                          setFormData({ ...formData, description: newDesc });
-                        }}
-                        className="p-2 text-sm border border-slate-200 rounded-lg flex-1 outline-none"
-                      />
-                      <button type="button" onClick={() => {
+              <div>
+                <label className="text-xs font-bold text-slate-500 uppercase flex items-center gap-2 mb-2">
+                  <Layers size={14} /> Features
+                </label>
+                {formData.description?.map((desc, index) => (
+                  <div key={index} className="flex gap-2 mb-2">
+                    <input
+                      value={desc}
+                      onChange={e => {
                         const newDesc = [...(formData.description || [])];
-                        newDesc.splice(index, 1);
+                        newDesc[index] = e.target.value;
                         setFormData({ ...formData, description: newDesc });
-                      }} className="text-red-400 hover:text-red-600"><X size={16}/></button>
-                    </div>
-                  ))}
-                  <button type="button" onClick={() => setFormData({...formData, description: [...(formData.description || []), '']})} 
-                    className="text-xs font-bold text-indigo-600 hover:text-indigo-700 flex items-center gap-1">
-                    <Plus size={14}/> Add Feature
-                  </button>
-               </div>
+                      }}
+                      className="p-2 text-sm border border-slate-200 rounded-lg flex-1 outline-none"
+                    />
+                    <button type="button" onClick={() => {
+                      const newDesc = [...(formData.description || [])];
+                      newDesc.splice(index, 1);
+                      setFormData({ ...formData, description: newDesc });
+                    }} className="text-red-400 hover:text-red-600"><X size={16} /></button>
+                  </div>
+                ))}
+                <button type="button" onClick={() => setFormData({ ...formData, description: [...(formData.description || []), ''] })}
+                  className="text-xs font-bold text-indigo-600 hover:text-indigo-700 flex items-center gap-1">
+                  <Plus size={14} /> Add Feature
+                </button>
+              </div>
             </div>
 
+            
+
             <div className="md:col-span-3 flex justify-end gap-3 pt-4 border-t border-slate-100">
-               <button type="submit" className="px-8 py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 shadow-lg shadow-indigo-100 transition-all active:scale-95">
-                 {isEditing ? "Update Timepiece" : "Save to Inventory"}
-               </button>
+              <button type="submit" className="px-8 py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 shadow-lg shadow-indigo-100 transition-all active:scale-95">
+                {isEditing ? "Update Timepiece" : "Save to Inventory"}
+              </button>
             </div>
           </form>
         </div>
@@ -234,18 +303,18 @@ const Inventory = () => {
         {/* Search & Filter Bar */}
         <div className="flex flex-col md:flex-row gap-4 mb-6">
           <div className="relative flex-1">
-            <Search className="absolute left-4 top-3.5 text-slate-400" size={18}/>
-            <input 
-              type="text" 
-              placeholder="Search by model name..." 
-              value={search} 
-              onChange={e => setSearch(e.target.value)} 
+            <Search className="absolute left-4 top-3.5 text-slate-400" size={18} />
+            <input
+              type="text"
+              placeholder="Search by model name..."
+              value={search}
+              onChange={e => setSearch(e.target.value)}
               className="w-full p-3 pl-12 bg-white border border-slate-200 rounded-2xl focus:ring-2 focus:ring-indigo-500 outline-none shadow-sm transition"
             />
           </div>
-          <select 
-            value={filter} 
-            onChange={e => setFilter(e.target.value as any)} 
+          <select
+            value={filter}
+            onChange={e => setFilter(e.target.value as any)}
             className="p-3 bg-white border border-slate-200 rounded-2xl outline-none shadow-sm font-medium text-slate-600"
           >
             <option value="all">All Statuses</option>
@@ -291,10 +360,10 @@ const Inventory = () => {
                   <td className="px-6 py-4 text-right">
                     <div className="flex justify-end gap-2">
                       <button onClick={() => handleEdit(watch)} className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition">
-                        <Edit2 size={18}/>
+                        <Edit2 size={18} />
                       </button>
                       <button onClick={() => handleDelete(watch._id)} className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition">
-                        <Trash2 size={18}/>
+                        <Trash2 size={18} />
                       </button>
                     </div>
                   </td>
@@ -304,7 +373,7 @@ const Inventory = () => {
           </table>
           {filteredWatches.length === 0 && (
             <div className="p-12 text-center">
-              <AlertCircle size={40} className="mx-auto text-slate-200 mb-3"/>
+              <AlertCircle size={40} className="mx-auto text-slate-200 mb-3" />
               <p className="text-slate-400 font-medium">No timepieces found matching your criteria.</p>
             </div>
           )}
